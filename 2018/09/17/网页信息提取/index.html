@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="课程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Beautifulsoup库简介在介绍使用css选择器之前，我们先来了解一下要与其配合使用的Beautifulsoup库  Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.  安装Beautifulsoup库的安装和reques">
+<meta name="keywords" content="课程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页信息提取">
+<meta property="og:url" content="http://yoursite.com/2018/09/17/网页信息提取/index.html">
+<meta property="og:site_name" content="Cloud-J的博客">
+<meta property="og:description" content="Beautifulsoup库简介在介绍使用css选择器之前，我们先来了解一下要与其配合使用的Beautifulsoup库  Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.  安装Beautifulsoup库的安装和reques">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-17T14:45:09.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页信息提取">
+<meta name="twitter:description" content="Beautifulsoup库简介在介绍使用css选择器之前，我们先来了解一下要与其配合使用的Beautifulsoup库  Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.  安装Beautifulsoup库的安装和reques">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/17/网页信息提取/"/>
+
+
+
+
+
+  <title>网页信息提取 | Cloud-J的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cloud-J的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我们仍未知道那天所看见的BUG的原因</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/17/网页信息提取/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cloud-J">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloud-J的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网页信息提取</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-17T22:31:28+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Beautifulsoup库简介"><a href="#Beautifulsoup库简介" class="headerlink" title="Beautifulsoup库简介"></a>Beautifulsoup库简介</h2><p>在介绍使用<a href="#css_selector">css选择器</a>之前，我们先来了解一下要与其配合使用的Beautifulsoup库</p>
+<blockquote>
+<p><a href="http://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener">Beautiful Soup</a> 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Beautifulsoup库的安装和requests库的安装类似，只要在命令行中用pip命令就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<h2 id="Beautifulsoup库的使用"><a href="#Beautifulsoup库的使用" class="headerlink" title="Beautifulsoup库的使用"></a>Beautifulsoup库的使用</h2><a id="more"></a>
+<p>还是以百度首页为例，我们先用requests库的get方法获得页面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment"># 从bs4库中导入Beautifulsoup类</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line">r = requests.get(url)</span><br><span class="line">r.encoding = <span class="string">'utf-8'</span></span><br><span class="line"><span class="comment"># 用一个变量来保存爬到的页面</span></span><br><span class="line">html = r.text</span><br><span class="line"><span class="comment"># 使用‘lxml HTML’作为解释器解析HTML</span></span><br><span class="line">soup = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line"><span class="comment"># 格式化输出</span></span><br><span class="line">print(soup.prettify())</span><br><span class="line"></span><br><span class="line"><span class="comment"># result</span></span><br><span class="line"><span class="comment"># &lt;html&gt;</span></span><br><span class="line"><span class="comment">#  &lt;head&gt;</span></span><br><span class="line"><span class="comment">#   &lt;meta content="text/html;charset=utf-8" http-equiv="content-type"/&gt;</span></span><br><span class="line"><span class="comment">#   &lt;meta content="IE=Edge" http-equiv="X-UA-Compatible"/&gt;</span></span><br><span class="line"><span class="comment">#   &lt;meta content="always" name="referrer"/&gt;</span></span><br><span class="line"><span class="comment">#   &lt;link href="http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css" rel="stylesheet" type="text/css"/&gt;</span></span><br><span class="line"><span class="comment">#   &lt;title&gt;</span></span><br><span class="line"><span class="comment">#    百度一下，你就知道</span></span><br><span class="line"><span class="comment">#   &lt;/title&gt;</span></span><br><span class="line"><span class="comment">#  &lt;/head&gt;</span></span><br><span class="line"><span class="comment">#  &lt;body link="#0000cc"&gt;</span></span><br><span class="line"><span class="comment">#   &lt;div id="wrapper"&gt;</span></span><br><span class="line"><span class="comment">#    &lt;div id="head"&gt;</span></span><br><span class="line"><span class="comment">#     &lt;div class="head_wrapper"&gt;</span></span><br><span class="line"><span class="comment"># ... ...</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，用Beautifulsoup库解析之后的HTML被转换成了标签树，标签树的每一个节点都是一个python对象，因此我们就可以很方便地对标签树进行操作。</p>
+<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a><h2 id="css_selector">CSS选择器<h2></h2><p>CSS选择器是一种单独的文档搜索语法。Beautiful Soup支持大部分的CSS选择器，Tag和Beautifulsoup对象的<code>.select()</code>方法可以通过传入字符串参数找到对应的标签。</p>
+<p>例如我们要找title标签:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title = soup.select(<span class="string">"title"</span>)</span><br><span class="line">print(title)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]</span></span><br></pre></td></tr></table></figure>
+<p>也可以通过标签逐层查找：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title = soup.select(<span class="string">'html head title'</span>)</span><br><span class="line">print(title)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]</span></span><br></pre></td></tr></table></figure>
+<p>直接子标签查找：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = soup.select(<span class="string">'p &gt; a'</span>)</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">[&lt;a href="http://home.baidu.com"&gt;关于百度&lt;/a&gt;,</span></span><br><span class="line"><span class="string"> &lt;a href="http://ir.baidu.com"&gt;About Baidu&lt;/a&gt;,</span></span><br><span class="line"><span class="string"> &lt;a href="http://www.baidu.com/duty/"&gt;使用百度前必读&lt;/a&gt;,</span></span><br><span class="line"><span class="string"> &lt;a class="cp-feedback" href="http://jianyi.baidu.com/"&gt;意见反馈&lt;/a&gt;]</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>通过类名和id查找：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找class='lb'的标签</span></span><br><span class="line">print(soup.select(<span class="string">'.lb'</span>))</span><br><span class="line"><span class="comment"># 查找id='cp'的标签</span></span><br><span class="line">print(soup.select(<span class="string">'#cp'</span>))</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">[&lt;a class="lb" href="http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1" name="tj_login"&gt;登录&lt;/a&gt;]</span></span><br><span class="line"><span class="string">[&lt;p id="cp"&gt;©2017 Baidu &lt;a href="http://www.baidu.com/duty/"&gt;使用百度前必读&lt;/a&gt;  &lt;a class="cp-feedback" href="http://jianyi.baidu.com/"&gt;意见反馈&lt;/a&gt; 京ICP证030173号  &lt;img src="//www.baidu.com/img/gs.gif"/&gt; &lt;/p&gt;]</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>除了以上的一些基本的查找方法外，还有组合查找、属性查找、语言设置查找等，可以参看官方文档中关于选择器的<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#id37" target="_blank" rel="noopener">一节</a></p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><blockquote>
+<p>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。</p>
+<p>正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。</p>
+</blockquote>
+<p>简单来说，正则表达式是用来简洁表达一组字符串的表达式。</p>
+<p>举个简单的例子，比如你要匹配字符串中的’PY’’PYY’’PYYYY’……’PYYYYYYYY…’，它们对应的正则表达式就是’PY+’</p>
+<p>总的来说，正则表达式是</p>
+<ul>
+<li>通用的字符串表达框架</li>
+<li>简洁表达一组字符串的表达式</li>
+<li>针对字符串表达’简洁‘和’特征’思想的工具</li>
+<li>判断某字符串的特征归属</li>
+</ul>
+<p>正则表达式描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>正则表达式由<strong>字符</strong>和<strong>操作符</strong>构成</p>
+<p>常用的操作符</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>表示任何单个字符</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>字符集，对单个字符给出取值范围</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>非字符集，对单个字符给出排除范围</td>
+</tr>
+<tr>
+<td>*</td>
+<td>前一个字符的0次或无限次扩展</td>
+</tr>
+<tr>
+<td>+</td>
+<td>前一个字符的1次或无限次扩展</td>
+</tr>
+<tr>
+<td>?</td>
+<td>前一个字符的0次或1次扩展</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>左右表达式的任意一个</td>
+</tr>
+<tr>
+<td>{m}</td>
+<td>扩展前一个字符m次</td>
+</tr>
+<tr>
+<td>{m,n}</td>
+<td>扩展前一个字符m次到n次（包含）</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串结尾</td>
+</tr>
+<tr>
+<td>()</td>
+<td>分组标记，内部只能使用\</td>
+<td></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字，等价于[0-9]</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>单词字符，等价于[A-Zz-z0-9_]</td>
+</tr>
+</tbody>
+</table>
+<p>一些实例</p>
+<table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>对应字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P(Y\</td>
+<td>YT\</td>
+<td>YTH\</td>
+<td>YTHO)?N</td>
+<td>‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’</td>
+</tr>
+<tr>
+<td>PYTHON+</td>
+<td>‘PYTHON’, ‘PYTHONN’,……,’PYTHONNN……’</td>
+</tr>
+<tr>
+<td>PYTH[ON]</td>
+<td>‘PYTHO’, ‘PYTHN’</td>
+</tr>
+<tr>
+<td>PYTH{1,3}ON</td>
+<td>‘PYTHON’, ‘PYTHHON’, ‘PYTHHHON’</td>
+</tr>
+<tr>
+<td>^[A-Za-z]+$</td>
+<td>匹配由26个字母组成的字符串</td>
+</tr>
+<tr>
+<td>^-?\d+$</td>
+<td>匹配整数字符串</td>
+</tr>
+<tr>
+<td>[1-9]\d{5}</td>
+<td>中国境内邮政编码</td>
+</tr>
+<tr>
+<td>[\u4e00-\u9fa5]</td>
+<td>匹配中文字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Re库"><a href="#Re库" class="headerlink" title="Re库"></a>Re库</h2><p>re库是python中用于正则表达式匹配操作的标准库，不需要安装，可以直接通过<code>import re</code>导入</p>
+<p>re库采用的是原生字符串类型来表示正则表达式，原生字符串特点就是<strong>字符串中的‘\’不被解释为转义符</strong>，表示原生字符串只需要在字符串前面加上r就可以了</p>
+<p>re库的主要功能函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>re.search()</td>
+<td>在一个字符串中搜索匹配正则表达式的第一个位置，返回match对象</td>
+</tr>
+<tr>
+<td>re.match()</td>
+<td>从一个字符串的开始位置起匹配正则表达式，返回match对象</td>
+</tr>
+<tr>
+<td>re.findall()</td>
+<td>搜索字符串，以列表类型返回全部能匹配的子串</td>
+</tr>
+<tr>
+<td>re.split()</td>
+<td>将一个字符串按照正则表达式匹配结果进行分割，返回列表类型</td>
+</tr>
+<tr>
+<td>re.finditer()</td>
+<td>搜索字符串，返回一个匹配结果的迭代类型，每个迭代元素是match对象</td>
+</tr>
+<tr>
+<td>re.sub()</td>
+<td>在一个字符串中替换所有匹配正则表达式的子串，返回替换后的字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="re-search-pattern-string-flags-0"><a href="#re-search-pattern-string-flags-0" class="headerlink" title="re.search(pattern, string, flags=0)"></a>re.search(<em>pattern</em>, <em>string</em>, <em>flags=0</em>)</h3><h3 id="re-match-pattern-string-flags-0"><a href="#re-match-pattern-string-flags-0" class="headerlink" title="re.match(pattern, string, flags=0)"></a>re.match(<em>pattern</em>, <em>string</em>, <em>flags=0</em>)</h3><p><strong>∙ pattern</strong> : 正则表达式的字符串或原生字符串表示</p>
+<p><strong>∙ string</strong> : 待匹配字符串</p>
+<p><strong>∙ flags</strong> : 正则表达式使用时的控制标记</p>
+<p>match()和search()的区别在于，match方法是从字符串的起始位置开始匹配，如果有一个字符不同便结束匹配，返回<code>None</code>；而search方法则是搜索整个字符串匹配符合规则的子串，以下是两种方法的比较</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.search(<span class="string">r'b'</span>, <span class="string">'abcba'</span>)  <span class="comment"># &lt;_sre.SRE_Match object; span=(1, 2), match='b'&gt;</span></span><br><span class="line">re.match(<span class="string">r'b'</span>, <span class="string">'abcba'</span>)   <span class="comment"># no match</span></span><br><span class="line">re.search(<span class="string">r'a'</span>, <span class="string">'abcba'</span>)  <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 1), match='a'&gt;</span></span><br><span class="line">re.match(<span class="string">r'a'</span>, <span class="string">'abcba'</span>)   <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 1), match='a'&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果匹配成功，返回的是一个match对象，其中包含很多信息</p>
+<p>match对象的属性和方法</p>
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th>说明</th>
+<th><strong>方法</strong></th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.string</td>
+<td>待匹配的文本</td>
+<td>.group(0)</td>
+<td>获得匹配后的字符串</td>
+</tr>
+<tr>
+<td>.re</td>
+<td>匹配时使用的patter对象（正则表达式）</td>
+<td>.start()</td>
+<td>匹配字符串在原始字符串的开始位置</td>
+</tr>
+<tr>
+<td>.pos</td>
+<td>正则表达式搜索文本的开始位置</td>
+<td>.end()</td>
+<td>匹配字符串在原始字符串的结束位置</td>
+</tr>
+<tr>
+<td>.endpos</td>
+<td>正则表达式搜索文本的结束位置</td>
+<td>.span()</td>
+<td>返回(.start(), .end())</td>
+</tr>
+</tbody>
+</table>
+<h3 id="re-findall-pattern-string-flags-0"><a href="#re-findall-pattern-string-flags-0" class="headerlink" title="re.findall(pattern, string, flags=0)"></a>re.findall(<em>pattern</em>, <em>string</em>, <em>flags=0</em>)</h3><p>findall方法返回的是所有符合匹配规则的字符串组成的列表，顺序是根据字符串从左到右</p>
+<h3 id="re-split-pattern-string-maxsplit-0-flags-0"><a href="#re-split-pattern-string-maxsplit-0-flags-0" class="headerlink" title="re.split(pattern, string, maxsplit=0, flags=0)"></a>re.split(<em>pattern</em>, <em>string</em>, <em>maxsplit=0</em>, <em>flags=0</em>)</h3><blockquote>
+<p>根据<em>pattern</em>的出现拆分<em>字符串</em>。如果在<em>pattern</em>中使用捕获括号，则模式中所有组的文本也会作为结果列表的一部分返回。maxsplit表示最大分割数，如果<em>maxsplit</em>不为零，则至多出现<em>maxsplit</em>分裂，并且字符串的其余部分作为列表的最后一个元素返回。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.split(<span class="string">r'b'</span>, <span class="string">'abcba'</span>)      <span class="comment"># ['a', 'c', 'a']</span></span><br><span class="line">re.split(<span class="string">r'(b)'</span>, <span class="string">'abcba'</span>)    <span class="comment"># ['a', 'b', 'c', 'b', 'a']</span></span><br><span class="line">re.split(<span class="string">r'b'</span>, <span class="string">'abcba'</span>, <span class="number">1</span>)   <span class="comment"># ['a', 'cba']</span></span><br><span class="line">re.split(<span class="string">r'(b)'</span>, <span class="string">'abcba'</span>, <span class="number">1</span>) <span class="comment"># ['a', 'b', 'cba']</span></span><br></pre></td></tr></table></figure>
+<h3 id="re-finditer-pattern-string-flags-0"><a href="#re-finditer-pattern-string-flags-0" class="headerlink" title="re.finditer(pattern, string, flags=0)"></a>re.finditer(<em>pattern</em>, <em>string</em>, <em>flags=0</em>)</h3><p>与findall方法作用相同，只不过是以迭代器的形式返回</p>
+<h3 id="re-sub-pattern-repl-string-count-0-flags-0"><a href="#re-sub-pattern-repl-string-count-0-flags-0" class="headerlink" title="re.sub(pattern, repl, string, count=0, flags=0)"></a>re.sub(<em>pattern</em>, <em>repl</em>, <em>string</em>, <em>count=0</em>, <em>flags=0</em>)</h3><p><strong>· repl：替换匹配字符串的字符串</strong></p>
+<p><strong>∙ count ： 匹配的最大替换次数,为0时替换全部</strong></p>
+<p>将<em>string</em>中最左侧非重叠出现的<em>pattern</em>替换为<em>repl</em>，返回所获得的字符串。如果未找到该模式，则<em>字符串</em>将保持不变。<em>repl</em> 可以是一个字符串或一个函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.sub(<span class="string">r'b'</span>,<span class="string">'d'</span>,<span class="string">'abcba'</span>)    <span class="comment"># 'adcda'</span></span><br><span class="line">re.sub(<span class="string">r'b'</span>,<span class="string">'d'</span>,<span class="string">'abcba'</span>, <span class="number">1</span>) <span class="comment"># 'adcba'</span></span><br></pre></td></tr></table></figure>
+<h3 id="flags"><a href="#flags" class="headerlink" title="flags"></a>flags</h3><p>可以看到之前所以的函数中都有一个参数<code>flags</code>，它是用来配置正则表达式的匹配模式的。</p>
+<blockquote>
+<p>取值可以使用按位或运算符<code>|</code>表示同时生效，比如<code>re.I | re.M</code>。(来自<a href="http://cuiqingcai.com/977.html" target="_blank" rel="noopener">静觅</a>)</p>
+</blockquote>
+<ul>
+<li><code>re.I</code>(全拼：IGNORECASE): 忽略大小写（括号内是完整写法，下同）</li>
+<li><code>re.M</code>(全拼：MULTILINE): 多行模式，改变’^’和’$’的行为</li>
+<li><code>re.S</code>(全拼：DOTALL): 点任意匹配模式，改变’.’的行为</li>
+<li><code>re.L</code>(全拼：LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定</li>
+<li><code>re.U</code>(全拼：UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性</li>
+<li><code>re.X</code>(全拼：VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。</li>
+</ul>
+<h2 id="Chrome开发者工具"><a href="#Chrome开发者工具" class="headerlink" title="Chrome开发者工具"></a>Chrome开发者工具</h2><h3 id="如何调出Chrome开发者工具"><a href="#如何调出Chrome开发者工具" class="headerlink" title="如何调出Chrome开发者工具"></a>如何调出Chrome开发者工具</h3><ul>
+<li>按F12打开</li>
+<li>单击右键，在菜单中点击“检查”打开</li>
+</ul>
+<h3 id="常用面板模块"><a href="#常用面板模块" class="headerlink" title="常用面板模块"></a>常用面板模块</h3><ul>
+<li>元素(Elements)</li>
+<li>网络(Network)</li>
+</ul>
+<p><em>这里只介绍在写爬虫时可能会用到的两个功能模块，如果想了解其他的可以在网上找详细的教程</em></p>
+<h4 id="元素-Element"><a href="#元素-Element" class="headerlink" title="元素(Element)"></a>元素(Element)</h4><p>单击Element标签页，页面左边显示的是HTML的结构，右边是选中元素的全部属性</p>
+<ul>
+<li>鼠标移到某个元素上，页面视图上对应的地方会变成蓝色背景，可以用于定位元素对应的源代码。</li>
+<li>选中一个元素，在底部可以看到该元素在HTML结构中的位置关系</li>
+<li>右键一个元素可以对其进行修改，菜单从上到下依次是<ul>
+<li>Add attribute : 为该元素添加属性</li>
+<li>Edit attribute：修改该元素的属性</li>
+<li>Delete element：删除元素</li>
+<li>Copy：复制元素的一些信息，移到上面会显示二级菜单</li>
+<li>… …</li>
+</ul>
+</li>
+<li><strong>写某个元素的CSS选择器的时候，可以右键该元素，copy selector(有些版本叫CSS path或者CSS selector)</strong></li>
+</ul>
+<p>右侧显示的是选中元素的CSS属性，在Styles可以对CSS属性进行修改，删除和添加，仅对当前显示的页面生效，不会影响到源代码。</p>
+<h4 id="网络-Network"><a href="#网络-Network" class="headerlink" title="网络(Network)"></a>网络(Network)</h4><p>Network是一个监控当前网页所有的http请求的面版，它主体部分展示的是每个http请求，每个字段表示着该请求的不同属性和状态</p>
+<ul>
+<li>name：请求的文件名称</li>
+<li>status：状态代码</li>
+<li>type：文件类型</li>
+<li>initiator：请求源</li>
+<li>time：请求的时间</li>
+<li>waterfall：请求发送过程的状态轴</li>
+</ul>
+<p>当你按F5刷新页面的时候，可以看到最中间的的时间轴上花花绿绿的一条条线显示出来。这个记录的是页面在加载过程中所有的请求发出的时间和过程，你可以用鼠标选择一段时间，来观察这一段时间发出的请求内容</p>
+<p>单击Name一列任意一个请求的文件名，则会跳出这个请求对应的参数header（表头信息、返回信息、请求基本状态等），Preview（返回的格式化转移后文本信息）、response（转移之前的原始信息）、Cookies（该请求带的cookies）、Timing（请求时间变化）。这些东西可以用来分析请求，在讲反爬虫的时候我们会深入介绍。</p>
+<hr>
+<p><em>参考资料：</em><br><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="noopener">Beautifulsoup库官方文档</a><br><a href="https://yiyibooks.cn/xx/python_352/library/re.html" target="_blank" rel="noopener">re库官方文档</a></p>
+</h2></h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/课程/" rel="tag"><i class="fa fa-tag"></i> 课程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/17/静态页面爬虫/" rel="next" title="静态页面爬虫">
+                <i class="fa fa-chevron-left"></i> 静态页面爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/17/数据清洗/" rel="prev" title="数据清洗">
+                数据清洗 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cloud-J</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Beautifulsoup库简介"><span class="nav-number">1.</span> <span class="nav-text">Beautifulsoup库简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beautifulsoup库的使用"><span class="nav-number">3.</span> <span class="nav-text">Beautifulsoup库的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择器"><span class="nav-number">4.</span> <span class="nav-text">CSS选择器CSS选择器是一种单独的文档搜索语法。Beautiful Soup支持大部分的CSS选择器，Tag和Beautifulsoup对象的.select()方法可以通过传入字符串参数找到对应的标签。
+例如我们要找title标签:
+1234title = soup.select(&quot;title&quot;)print(title)# [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]
+也可以通过标签逐层查找：
+1234title = soup.select(&#39;html head title&#39;)print(title)# [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]
+直接子标签查找：
+123456789a = soup.select(&#39;p &gt; a&#39;)print(a)&#39;&#39;&#39;[&lt;a href=&quot;http://home.baidu.com&quot;&gt;关于百度&lt;/a&gt;, &lt;a href=&quot;http://ir.baidu.com&quot;&gt;About Baidu&lt;/a&gt;, &lt;a href=&quot;http://www.baidu.com/duty/&quot;&gt;使用百度前必读&lt;/a&gt;, &lt;a class=&quot;cp-feedback&quot; href=&quot;http://jianyi.baidu.com/&quot;&gt;意见反馈&lt;/a&gt;]&#39;&#39;&#39;
+通过类名和id查找：
+123456789# 查找class=&#39;lb&#39;的标签print(soup.select(&#39;.lb&#39;))# 查找id=&#39;cp&#39;的标签print(soup.select(&#39;#cp&#39;))&#39;&#39;&#39;[&lt;a class=&quot;lb&quot; href=&quot;http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1&quot; name=&quot;tj_login&quot;&gt;登录&lt;/a&gt;][&lt;p id=&quot;cp&quot;&gt;©2017 Baidu &lt;a href=&quot;http://www.baidu.com/duty/&quot;&gt;使用百度前必读&lt;/a&gt;  &lt;a class=&quot;cp-feedback&quot; href=&quot;http://jianyi.baidu.com/&quot;&gt;意见反馈&lt;/a&gt; 京ICP证030173号  &lt;img src=&quot;//www.baidu.com/img/gs.gif&quot;/&gt; &lt;/p&gt;]&#39;&#39;&#39;
+除了以上的一些基本的查找方法外，还有组合查找、属性查找、语言设置查找等，可以参看官方文档中关于选择器的一节
+正则表达式
+正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。
+正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。
+
+简单来说，正则表达式是用来简洁表达一组字符串的表达式。
+举个简单的例子，比如你要匹配字符串中的’PY’’PYY’’PYYYY’……’PYYYYYYYY…’，它们对应的正则表达式就是’PY+’
+总的来说，正则表达式是
+
+通用的字符串表达框架
+简洁表达一组字符串的表达式
+针对字符串表达’简洁‘和’特征’思想的工具
+判断某字符串的特征归属
+
+正则表达式描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。
+正则表达式由字符和操作符构成
+常用的操作符
+
+
+
+操作符
+说明
+
+
+
+
+.
+表示任何单个字符
+
+
+[]
+字符集，对单个字符给出取值范围
+
+
+[^]
+非字符集，对单个字符给出排除范围
+
+
+*
+前一个字符的0次或无限次扩展
+
+
++
+前一个字符的1次或无限次扩展
+
+
+?
+前一个字符的0次或1次扩展
+
+
+\
+
+左右表达式的任意一个
+
+
+{m}
+扩展前一个字符m次
+
+
+{m,n}
+扩展前一个字符m次到n次（包含）
+
+
+^
+匹配字符串开始
+
+
+$
+匹配字符串结尾
+
+
+()
+分组标记，内部只能使用\
+
+
+
+\d
+数字，等价于[0-9]
+
+
+\w
+单词字符，等价于[A-Zz-z0-9_]
+
+
+
+一些实例
+
+
+
+正则表达式
+对应字符串
+
+
+
+
+P(Y\
+YT\
+YTH\
+YTHO)?N
+‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’
+
+
+PYTHON+
+‘PYTHON’, ‘PYTHONN’,……,’PYTHONNN……’
+
+
+PYTH[ON]
+‘PYTHO’, ‘PYTHN’
+
+
+PYTH{1,3}ON
+‘PYTHON’, ‘PYTHHON’, ‘PYTHHHON’
+
+
+^[A-Za-z]+$
+匹配由26个字母组成的字符串
+
+
+^-?\d+$
+匹配整数字符串
+
+
+[1-9]\d{5}
+中国境内邮政编码
+
+
+[\u4e00-\u9fa5]
+匹配中文字符
+
+
+
+Re库re库是python中用于正则表达式匹配操作的标准库，不需要安装，可以直接通过import re导入
+re库采用的是原生字符串类型来表示正则表达式，原生字符串特点就是字符串中的‘\’不被解释为转义符，表示原生字符串只需要在字符串前面加上r就可以了
+re库的主要功能函数：
+
+
+
+函数
+说明
+
+
+
+
+re.search()
+在一个字符串中搜索匹配正则表达式的第一个位置，返回match对象
+
+
+re.match()
+从一个字符串的开始位置起匹配正则表达式，返回match对象
+
+
+re.findall()
+搜索字符串，以列表类型返回全部能匹配的子串
+
+
+re.split()
+将一个字符串按照正则表达式匹配结果进行分割，返回列表类型
+
+
+re.finditer()
+搜索字符串，返回一个匹配结果的迭代类型，每个迭代元素是match对象
+
+
+re.sub()
+在一个字符串中替换所有匹配正则表达式的子串，返回替换后的字符串
+
+
+
+re.search(pattern, string, flags=0)re.match(pattern, string, flags=0)∙ pattern : 正则表达式的字符串或原生字符串表示
+∙ string : 待匹配字符串
+∙ flags : 正则表达式使用时的控制标记
+match()和search()的区别在于，match方法是从字符串的起始位置开始匹配，如果有一个字符不同便结束匹配，返回None；而search方法则是搜索整个字符串匹配符合规则的子串，以下是两种方法的比较
+123456import rere.search(r&#39;b&#39;, &#39;abcba&#39;)  # &lt;_sre.SRE_Match object; span=(1, 2), match=&#39;b&#39;&gt;re.match(r&#39;b&#39;, &#39;abcba&#39;)   # no matchre.search(r&#39;a&#39;, &#39;abcba&#39;)  # &lt;_sre.SRE_Match object; span=(0, 1), match=&#39;a&#39;&gt;re.match(r&#39;a&#39;, &#39;abcba&#39;)   # &lt;_sre.SRE_Match object; span=(0, 1), match=&#39;a&#39;&gt;
+如果匹配成功，返回的是一个match对象，其中包含很多信息
+match对象的属性和方法
+
+
+
+属性
+说明
+方法
+说明
+
+
+
+
+.string
+待匹配的文本
+.group(0)
+获得匹配后的字符串
+
+
+.re
+匹配时使用的patter对象（正则表达式）
+.start()
+匹配字符串在原始字符串的开始位置
+
+
+.pos
+正则表达式搜索文本的开始位置
+.end()
+匹配字符串在原始字符串的结束位置
+
+
+.endpos
+正则表达式搜索文本的结束位置
+.span()
+返回(.start(), .end())
+
+
+
+re.findall(pattern, string, flags=0)findall方法返回的是所有符合匹配规则的字符串组成的列表，顺序是根据字符串从左到右
+re.split(pattern, string, maxsplit=0, flags=0)
+根据pattern的出现拆分字符串。如果在pattern中使用捕获括号，则模式中所有组的文本也会作为结果列表的一部分返回。maxsplit表示最大分割数，如果maxsplit不为零，则至多出现maxsplit分裂，并且字符串的其余部分作为列表的最后一个元素返回。
+
+123456import rere.split(r&#39;b&#39;, &#39;abcba&#39;)      # [&#39;a&#39;, &#39;c&#39;, &#39;a&#39;]re.split(r&#39;(b)&#39;, &#39;abcba&#39;)    # [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;]re.split(r&#39;b&#39;, &#39;abcba&#39;, 1)   # [&#39;a&#39;, &#39;cba&#39;]re.split(r&#39;(b)&#39;, &#39;abcba&#39;, 1) # [&#39;a&#39;, &#39;b&#39;, &#39;cba&#39;]
+re.finditer(pattern, string, flags=0)与findall方法作用相同，只不过是以迭代器的形式返回
+re.sub(pattern, repl, string, count=0, flags=0)· repl：替换匹配字符串的字符串
+∙ count ： 匹配的最大替换次数,为0时替换全部
+将string中最左侧非重叠出现的pattern替换为repl，返回所获得的字符串。如果未找到该模式，则字符串将保持不变。repl 可以是一个字符串或一个函数
+1234import rere.sub(r&#39;b&#39;,&#39;d&#39;,&#39;abcba&#39;)    # &#39;adcda&#39;re.sub(r&#39;b&#39;,&#39;d&#39;,&#39;abcba&#39;, 1) # &#39;adcba&#39;
+flags可以看到之前所以的函数中都有一个参数flags，它是用来配置正则表达式的匹配模式的。
+
+取值可以使用按位或运算符|表示同时生效，比如re.I | re.M。(来自静觅)
+
+
+re.I(全拼：IGNORECASE): 忽略大小写（括号内是完整写法，下同）
+re.M(全拼：MULTILINE): 多行模式，改变’^’和’$’的行为
+re.S(全拼：DOTALL): 点任意匹配模式，改变’.’的行为
+re.L(全拼：LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定
+re.U(全拼：UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性
+re.X(全拼：VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。
+
+Chrome开发者工具如何调出Chrome开发者工具
+按F12打开
+单击右键，在菜单中点击“检查”打开
+
+常用面板模块
+元素(Elements)
+网络(Network)
+
+这里只介绍在写爬虫时可能会用到的两个功能模块，如果想了解其他的可以在网上找详细的教程
+元素(Element)单击Element标签页，页面左边显示的是HTML的结构，右边是选中元素的全部属性
+
+鼠标移到某个元素上，页面视图上对应的地方会变成蓝色背景，可以用于定位元素对应的源代码。
+选中一个元素，在底部可以看到该元素在HTML结构中的位置关系
+右键一个元素可以对其进行修改，菜单从上到下依次是
+Add attribute : 为该元素添加属性
+Edit attribute：修改该元素的属性
+Delete element：删除元素
+Copy：复制元素的一些信息，移到上面会显示二级菜单
+… …
+
+
+写某个元素的CSS选择器的时候，可以右键该元素，copy selector(有些版本叫CSS path或者CSS selector)
+
+右侧显示的是选中元素的CSS属性，在Styles可以对CSS属性进行修改，删除和添加，仅对当前显示的页面生效，不会影响到源代码。
+网络(Network)Network是一个监控当前网页所有的http请求的面版，它主体部分展示的是每个http请求，每个字段表示着该请求的不同属性和状态
+
+name：请求的文件名称
+status：状态代码
+type：文件类型
+initiator：请求源
+time：请求的时间
+waterfall：请求发送过程的状态轴
+
+当你按F5刷新页面的时候，可以看到最中间的的时间轴上花花绿绿的一条条线显示出来。这个记录的是页面在加载过程中所有的请求发出的时间和过程，你可以用鼠标选择一段时间，来观察这一段时间发出的请求内容
+单击Name一列任意一个请求的文件名，则会跳出这个请求对应的参数header（表头信息、返回信息、请求基本状态等），Preview（返回的格式化转移后文本信息）、response（转移之前的原始信息）、Cookies（该请求带的cookies）、Timing（请求时间变化）。这些东西可以用来分析请求，在讲反爬虫的时候我们会深入介绍。
+
+参考资料：Beautifulsoup库官方文档re库官方文档
+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css_selector"><span class="nav-number">5.</span> <span class="nav-text">CSS选择器CSS选择器是一种单独的文档搜索语法。Beautiful Soup支持大部分的CSS选择器，Tag和Beautifulsoup对象的.select()方法可以通过传入字符串参数找到对应的标签。
+例如我们要找title标签:
+1234title = soup.select(&quot;title&quot;)print(title)# [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]
+也可以通过标签逐层查找：
+1234title = soup.select(&#39;html head title&#39;)print(title)# [&lt;title&gt;百度一下，你就知道&lt;/title&gt;]
+直接子标签查找：
+123456789a = soup.select(&#39;p &gt; a&#39;)print(a)&#39;&#39;&#39;[&lt;a href=&quot;http://home.baidu.com&quot;&gt;关于百度&lt;/a&gt;, &lt;a href=&quot;http://ir.baidu.com&quot;&gt;About Baidu&lt;/a&gt;, &lt;a href=&quot;http://www.baidu.com/duty/&quot;&gt;使用百度前必读&lt;/a&gt;, &lt;a class=&quot;cp-feedback&quot; href=&quot;http://jianyi.baidu.com/&quot;&gt;意见反馈&lt;/a&gt;]&#39;&#39;&#39;
+通过类名和id查找：
+123456789# 查找class=&#39;lb&#39;的标签print(soup.select(&#39;.lb&#39;))# 查找id=&#39;cp&#39;的标签print(soup.select(&#39;#cp&#39;))&#39;&#39;&#39;[&lt;a class=&quot;lb&quot; href=&quot;http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1&quot; name=&quot;tj_login&quot;&gt;登录&lt;/a&gt;][&lt;p id=&quot;cp&quot;&gt;©2017 Baidu &lt;a href=&quot;http://www.baidu.com/duty/&quot;&gt;使用百度前必读&lt;/a&gt;  &lt;a class=&quot;cp-feedback&quot; href=&quot;http://jianyi.baidu.com/&quot;&gt;意见反馈&lt;/a&gt; 京ICP证030173号  &lt;img src=&quot;//www.baidu.com/img/gs.gif&quot;/&gt; &lt;/p&gt;]&#39;&#39;&#39;
+除了以上的一些基本的查找方法外，还有组合查找、属性查找、语言设置查找等，可以参看官方文档中关于选择器的一节
+正则表达式
+正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。
+正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。
+
+简单来说，正则表达式是用来简洁表达一组字符串的表达式。
+举个简单的例子，比如你要匹配字符串中的’PY’’PYY’’PYYYY’……’PYYYYYYYY…’，它们对应的正则表达式就是’PY+’
+总的来说，正则表达式是
+
+通用的字符串表达框架
+简洁表达一组字符串的表达式
+针对字符串表达’简洁‘和’特征’思想的工具
+判断某字符串的特征归属
+
+正则表达式描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。
+正则表达式由字符和操作符构成
+常用的操作符
+
+
+
+操作符
+说明
+
+
+
+
+.
+表示任何单个字符
+
+
+[]
+字符集，对单个字符给出取值范围
+
+
+[^]
+非字符集，对单个字符给出排除范围
+
+
+*
+前一个字符的0次或无限次扩展
+
+
++
+前一个字符的1次或无限次扩展
+
+
+?
+前一个字符的0次或1次扩展
+
+
+\
+
+左右表达式的任意一个
+
+
+{m}
+扩展前一个字符m次
+
+
+{m,n}
+扩展前一个字符m次到n次（包含）
+
+
+^
+匹配字符串开始
+
+
+$
+匹配字符串结尾
+
+
+()
+分组标记，内部只能使用\
+
+
+
+\d
+数字，等价于[0-9]
+
+
+\w
+单词字符，等价于[A-Zz-z0-9_]
+
+
+
+一些实例
+
+
+
+正则表达式
+对应字符串
+
+
+
+
+P(Y\
+YT\
+YTH\
+YTHO)?N
+‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’
+
+
+PYTHON+
+‘PYTHON’, ‘PYTHONN’,……,’PYTHONNN……’
+
+
+PYTH[ON]
+‘PYTHO’, ‘PYTHN’
+
+
+PYTH{1,3}ON
+‘PYTHON’, ‘PYTHHON’, ‘PYTHHHON’
+
+
+^[A-Za-z]+$
+匹配由26个字母组成的字符串
+
+
+^-?\d+$
+匹配整数字符串
+
+
+[1-9]\d{5}
+中国境内邮政编码
+
+
+[\u4e00-\u9fa5]
+匹配中文字符
+
+
+
+Re库re库是python中用于正则表达式匹配操作的标准库，不需要安装，可以直接通过import re导入
+re库采用的是原生字符串类型来表示正则表达式，原生字符串特点就是字符串中的‘\’不被解释为转义符，表示原生字符串只需要在字符串前面加上r就可以了
+re库的主要功能函数：
+
+
+
+函数
+说明
+
+
+
+
+re.search()
+在一个字符串中搜索匹配正则表达式的第一个位置，返回match对象
+
+
+re.match()
+从一个字符串的开始位置起匹配正则表达式，返回match对象
+
+
+re.findall()
+搜索字符串，以列表类型返回全部能匹配的子串
+
+
+re.split()
+将一个字符串按照正则表达式匹配结果进行分割，返回列表类型
+
+
+re.finditer()
+搜索字符串，返回一个匹配结果的迭代类型，每个迭代元素是match对象
+
+
+re.sub()
+在一个字符串中替换所有匹配正则表达式的子串，返回替换后的字符串
+
+
+
+re.search(pattern, string, flags=0)re.match(pattern, string, flags=0)∙ pattern : 正则表达式的字符串或原生字符串表示
+∙ string : 待匹配字符串
+∙ flags : 正则表达式使用时的控制标记
+match()和search()的区别在于，match方法是从字符串的起始位置开始匹配，如果有一个字符不同便结束匹配，返回None；而search方法则是搜索整个字符串匹配符合规则的子串，以下是两种方法的比较
+123456import rere.search(r&#39;b&#39;, &#39;abcba&#39;)  # &lt;_sre.SRE_Match object; span=(1, 2), match=&#39;b&#39;&gt;re.match(r&#39;b&#39;, &#39;abcba&#39;)   # no matchre.search(r&#39;a&#39;, &#39;abcba&#39;)  # &lt;_sre.SRE_Match object; span=(0, 1), match=&#39;a&#39;&gt;re.match(r&#39;a&#39;, &#39;abcba&#39;)   # &lt;_sre.SRE_Match object; span=(0, 1), match=&#39;a&#39;&gt;
+如果匹配成功，返回的是一个match对象，其中包含很多信息
+match对象的属性和方法
+
+
+
+属性
+说明
+方法
+说明
+
+
+
+
+.string
+待匹配的文本
+.group(0)
+获得匹配后的字符串
+
+
+.re
+匹配时使用的patter对象（正则表达式）
+.start()
+匹配字符串在原始字符串的开始位置
+
+
+.pos
+正则表达式搜索文本的开始位置
+.end()
+匹配字符串在原始字符串的结束位置
+
+
+.endpos
+正则表达式搜索文本的结束位置
+.span()
+返回(.start(), .end())
+
+
+
+re.findall(pattern, string, flags=0)findall方法返回的是所有符合匹配规则的字符串组成的列表，顺序是根据字符串从左到右
+re.split(pattern, string, maxsplit=0, flags=0)
+根据pattern的出现拆分字符串。如果在pattern中使用捕获括号，则模式中所有组的文本也会作为结果列表的一部分返回。maxsplit表示最大分割数，如果maxsplit不为零，则至多出现maxsplit分裂，并且字符串的其余部分作为列表的最后一个元素返回。
+
+123456import rere.split(r&#39;b&#39;, &#39;abcba&#39;)      # [&#39;a&#39;, &#39;c&#39;, &#39;a&#39;]re.split(r&#39;(b)&#39;, &#39;abcba&#39;)    # [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;b&#39;, &#39;a&#39;]re.split(r&#39;b&#39;, &#39;abcba&#39;, 1)   # [&#39;a&#39;, &#39;cba&#39;]re.split(r&#39;(b)&#39;, &#39;abcba&#39;, 1) # [&#39;a&#39;, &#39;b&#39;, &#39;cba&#39;]
+re.finditer(pattern, string, flags=0)与findall方法作用相同，只不过是以迭代器的形式返回
+re.sub(pattern, repl, string, count=0, flags=0)· repl：替换匹配字符串的字符串
+∙ count ： 匹配的最大替换次数,为0时替换全部
+将string中最左侧非重叠出现的pattern替换为repl，返回所获得的字符串。如果未找到该模式，则字符串将保持不变。repl 可以是一个字符串或一个函数
+1234import rere.sub(r&#39;b&#39;,&#39;d&#39;,&#39;abcba&#39;)    # &#39;adcda&#39;re.sub(r&#39;b&#39;,&#39;d&#39;,&#39;abcba&#39;, 1) # &#39;adcba&#39;
+flags可以看到之前所以的函数中都有一个参数flags，它是用来配置正则表达式的匹配模式的。
+
+取值可以使用按位或运算符|表示同时生效，比如re.I | re.M。(来自静觅)
+
+
+re.I(全拼：IGNORECASE): 忽略大小写（括号内是完整写法，下同）
+re.M(全拼：MULTILINE): 多行模式，改变’^’和’$’的行为
+re.S(全拼：DOTALL): 点任意匹配模式，改变’.’的行为
+re.L(全拼：LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定
+re.U(全拼：UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性
+re.X(全拼：VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。
+
+Chrome开发者工具如何调出Chrome开发者工具
+按F12打开
+单击右键，在菜单中点击“检查”打开
+
+常用面板模块
+元素(Elements)
+网络(Network)
+
+这里只介绍在写爬虫时可能会用到的两个功能模块，如果想了解其他的可以在网上找详细的教程
+元素(Element)单击Element标签页，页面左边显示的是HTML的结构，右边是选中元素的全部属性
+
+鼠标移到某个元素上，页面视图上对应的地方会变成蓝色背景，可以用于定位元素对应的源代码。
+选中一个元素，在底部可以看到该元素在HTML结构中的位置关系
+右键一个元素可以对其进行修改，菜单从上到下依次是
+Add attribute : 为该元素添加属性
+Edit attribute：修改该元素的属性
+Delete element：删除元素
+Copy：复制元素的一些信息，移到上面会显示二级菜单
+… …
+
+
+写某个元素的CSS选择器的时候，可以右键该元素，copy selector(有些版本叫CSS path或者CSS selector)
+
+右侧显示的是选中元素的CSS属性，在Styles可以对CSS属性进行修改，删除和添加，仅对当前显示的页面生效，不会影响到源代码。
+网络(Network)Network是一个监控当前网页所有的http请求的面版，它主体部分展示的是每个http请求，每个字段表示着该请求的不同属性和状态
+
+name：请求的文件名称
+status：状态代码
+type：文件类型
+initiator：请求源
+time：请求的时间
+waterfall：请求发送过程的状态轴
+
+当你按F5刷新页面的时候，可以看到最中间的的时间轴上花花绿绿的一条条线显示出来。这个记录的是页面在加载过程中所有的请求发出的时间和过程，你可以用鼠标选择一段时间，来观察这一段时间发出的请求内容
+单击Name一列任意一个请求的文件名，则会跳出这个请求对应的参数header（表头信息、返回信息、请求基本状态等），Preview（返回的格式化转移后文本信息）、response（转移之前的原始信息）、Cookies（该请求带的cookies）、Timing（请求时间变化）。这些东西可以用来分析请求，在讲反爬虫的时候我们会深入介绍。
+
+参考资料：Beautifulsoup库官方文档re库官方文档
+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">7.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Re库"><span class="nav-number">8.</span> <span class="nav-text">Re库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#re-search-pattern-string-flags-0"><span class="nav-number">8.1.</span> <span class="nav-text">re.search(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-match-pattern-string-flags-0"><span class="nav-number">8.2.</span> <span class="nav-text">re.match(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-findall-pattern-string-flags-0"><span class="nav-number">8.3.</span> <span class="nav-text">re.findall(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-split-pattern-string-maxsplit-0-flags-0"><span class="nav-number">8.4.</span> <span class="nav-text">re.split(pattern, string, maxsplit=0, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-finditer-pattern-string-flags-0"><span class="nav-number">8.5.</span> <span class="nav-text">re.finditer(pattern, string, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-sub-pattern-repl-string-count-0-flags-0"><span class="nav-number">8.6.</span> <span class="nav-text">re.sub(pattern, repl, string, count=0, flags=0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flags"><span class="nav-number">8.7.</span> <span class="nav-text">flags</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome开发者工具"><span class="nav-number">9.</span> <span class="nav-text">Chrome开发者工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何调出Chrome开发者工具"><span class="nav-number">9.1.</span> <span class="nav-text">如何调出Chrome开发者工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用面板模块"><span class="nav-number">9.2.</span> <span class="nav-text">常用面板模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元素-Element"><span class="nav-number">9.2.1.</span> <span class="nav-text">元素(Element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络-Network"><span class="nav-number">9.2.2.</span> <span class="nav-text">网络(Network)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cloud-J</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="课程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python文件操作open函数python中对文件操作主要是使用了内建函数open() 最常见的用法是带两个参数：open(filename, mode)，举个例子 1open(&apos;workflie.txt&apos;, &apos;w&apos;) 参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：    字符 含义     &amp;#39;r&amp;#39; 以只读方式打开文件（默认）   &amp;#39;w&amp;#39;">
+<meta name="keywords" content="课程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件操作和数据的存储">
+<meta property="og:url" content="http://yoursite.com/2018/09/17/文件操作和数据的存储/index.html">
+<meta property="og:site_name" content="Cloud-J的博客">
+<meta property="og:description" content="python文件操作open函数python中对文件操作主要是使用了内建函数open() 最常见的用法是带两个参数：open(filename, mode)，举个例子 1open(&apos;workflie.txt&apos;, &apos;w&apos;) 参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：    字符 含义     &amp;#39;r&amp;#39; 以只读方式打开文件（默认）   &amp;#39;w&amp;#39;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-17T14:51:10.401Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件操作和数据的存储">
+<meta name="twitter:description" content="python文件操作open函数python中对文件操作主要是使用了内建函数open() 最常见的用法是带两个参数：open(filename, mode)，举个例子 1open(&apos;workflie.txt&apos;, &apos;w&apos;) 参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：    字符 含义     &amp;#39;r&amp;#39; 以只读方式打开文件（默认）   &amp;#39;w&amp;#39;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/17/文件操作和数据的存储/"/>
+
+
+
+
+
+  <title>文件操作和数据的存储 | Cloud-J的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cloud-J的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我们仍未知道那天所看见的BUG的原因</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/17/文件操作和数据的存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cloud-J">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloud-J的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文件操作和数据的存储</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-17T22:50:04+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="python文件操作"><a href="#python文件操作" class="headerlink" title="python文件操作"></a>python文件操作</h2><h3 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a><code>open</code>函数</h3><p>python中对文件操作主要是使用了内建函数<code>open()</code></p>
+<p>最常见的用法是带两个参数：<code>open(filename, mode)</code>，举个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(<span class="string">'workflie.txt'</span>, <span class="string">'w'</span>)</span><br></pre></td></tr></table></figure>
+<p>参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;r&#39;</code></td>
+<td>以只读方式打开文件（默认）</td>
+</tr>
+<tr>
+<td><code>&#39;w&#39;</code></td>
+<td>只以写入方式打开文件，如果文件已存在，则删除原有内容；如不存在，则创建新文件</td>
+</tr>
+<tr>
+<td><code>&#39;a&#39;</code></td>
+<td>打开写入，如果文件存在，追加到文件末尾；如果不存在，创建新文件</td>
+</tr>
+<tr>
+<td><code>&#39;rb&#39;</code></td>
+<td>以二进制格式只读方式打开文件</td>
+</tr>
+<tr>
+<td><code>&#39;wb&#39;</code></td>
+<td>以二进制格式写入方式打开文件</td>
+</tr>
+<tr>
+<td><code>&#39;ab&#39;</code></td>
+<td>以二进制格式追加方式打开文件</td>
+</tr>
+<tr>
+<td><code>&#39;r+&#39;</code></td>
+<td>可读可写，文件指针在文件开头</td>
+</tr>
+<tr>
+<td><code>&#39;w+&#39;</code></td>
+<td>可读可写，已存在时删除原有内容，不存在时创建新文件</td>
+</tr>
+<tr>
+<td><code>&#39;a+&#39;</code></td>
+<td>可读可写，写的内容追加在原有文件结尾</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3 id="File对象"><a href="#File对象" class="headerlink" title="File对象"></a>File对象</h3><p>一个文件被打开后，就是一个File对象。File对象提供了一系列方法用于读取、写入和关闭</p>
+<h4 id="close-方法"><a href="#close-方法" class="headerlink" title="close()方法"></a>close()方法</h4><p>我们使用open函数打开了一个文件，结束对文件的操作之后，要用close()方法来释放这个文件占有的内存，用close()方法释放内存是一个很好的习惯。</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = open(<span class="string">'test.txt'</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="comment"># ... ...</span></span><br><span class="line"><span class="comment"># 关闭文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h4 id="write-方法"><a href="#write-方法" class="headerlink" title="write()方法"></a>write()方法</h4><p>write()方法可将任何字符串写入一个打开的文件。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。</p>
+<p>write()方法不会在字符串的结尾添加换行符(‘\n’)</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.write(string)</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以写入模式打开文件</span></span><br><span class="line">f = open(<span class="string">'test.txt'</span>, <span class="string">'w'</span>)</span><br><span class="line">f.write(<span class="string">'Cloudz is very cooool~\n'</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>上述例子会创建一个‘test.txt’文件，打开文件可以看到以下内容：</p>
+<p>Cloudz is very coooooool~</p>
+<h4 id="read-方法"><a href="#read-方法" class="headerlink" title="read()方法"></a>read()方法</h4><p>read（）方法从一个打开的文件中读取一个字符串。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.read([count])</span><br></pre></td></tr></table></figure>
+<p>在这里，被传递的参数是要从已打开文件中读取的字节计数。该方法从文件的开头开始读入，如果没有传入count，它会尝试尽可能多地读取更多的内容，很可能是直到文件的末尾。</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读模式打开文件</span></span><br><span class="line">f = open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line">str = f.read(<span class="number">11</span>)</span><br><span class="line">print(str)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># result</span></span><br><span class="line"><span class="comment"># Cloudz is v</span></span><br></pre></td></tr></table></figure>
+<h3 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h3><p>处理文件对象的时候使用<code>with</code>关键字可以方便很多，这样的好处在于文件用完后会自动关闭，即使过程中发生异常也没关系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'test.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'Everything is ready'</span>)</span><br></pre></td></tr></table></figure>
+<p>想了解上下文管理器的原理可以看官方文档<a href="https://yiyibooks.cn/xx/python_352/reference/datamodel.html#context-managers" target="_blank" rel="noopener">关于上下文管理器的一节</a></p>
+<h2 id="CSV文件的读写"><a href="#CSV文件的读写" class="headerlink" title="CSV文件的读写"></a>CSV文件的读写</h2><p>所谓的CSV（Comma Separated Values）格式是电子表格和数据库最常见的导入和导出格式。</p>
+<p>所在，在Python标准库中，也提供了相应的csv库来简化对CSV文件的操作。</p>
+<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p>一般用法：</p>
+<p><code>csv.reader(csvfile)</code></p>
+<p>返回一个读取器对象，它将在给定的<em>csvfile</em>中迭代，每次调用<code>__next__()</code>方法时返回一个字符串。</p>
+<p>使用示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'test.csv'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br></pre></td></tr></table></figure>
+<h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p>一般用法：</p>
+<p><code>csv.writer(csvfile)</code></p>
+<p>返回一个writer对象，负责将用户的数据转换为给定类文件对象上的分隔字符串。<em>csvfile</em>可以是具有<code>write()</code>方法的任何对象。如果<em>csvfile</em>是文件对象，则应使用<code>newline=&#39;&#39;</code>打开</p>
+<blockquote>
+<p>如果没有<code>newline=&#39;&#39;</code>，写入的数据每行之间都会有空行，也就是说<code>newline</code>的默认参数为换行符</p>
+</blockquote>
+<p>使用示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">testdata = [[<span class="string">'a'</span>, <span class="string">'1'</span>], [<span class="string">'b'</span>,<span class="string">'2'</span>], [<span class="string">'c'</span>,<span class="string">'3'</span>]]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'test.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f)</span><br><span class="line">    writer.writerrows(testdata)</span><br></pre></td></tr></table></figure>
+<h3 id="用pandas库读取CSV文件"><a href="#用pandas库读取CSV文件" class="headerlink" title="用pandas库读取CSV文件"></a>用pandas库读取CSV文件</h3><p>使用pandas库中的read_csv方法也可以进行csv文件的读取，并且返回的类型为DataFrame。有兴趣的可以去看<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv" target="_blank" rel="noopener">pandas库的官网文档</a></p>
+<h2 id="使用Json储存结构化数据"><a href="#使用Json储存结构化数据" class="headerlink" title="使用Json储存结构化数据"></a>使用Json储存结构化数据</h2><blockquote>
+<p>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。JSON的数据格式其实就是python里面的字典格式，里面可以包含方括号括起来的数组，也就是python里面的列表。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/课程/" rel="tag"><i class="fa fa-tag"></i> 课程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/17/数据清洗/" rel="next" title="数据清洗">
+                <i class="fa fa-chevron-left"></i> 数据清洗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cloud-J</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python文件操作"><span class="nav-number">1.</span> <span class="nav-text">python文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#open函数"><span class="nav-number">1.1.</span> <span class="nav-text">open函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File对象"><span class="nav-number">1.2.</span> <span class="nav-text">File对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#close-方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">close()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#write-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">write()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read-方法"><span class="nav-number">1.2.3.</span> <span class="nav-text">read()方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文管理器"><span class="nav-number">1.3.</span> <span class="nav-text">上下文管理器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSV文件的读写"><span class="nav-number">2.</span> <span class="nav-text">CSV文件的读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读取"><span class="nav-number">2.1.</span> <span class="nav-text">读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入"><span class="nav-number">2.2.</span> <span class="nav-text">写入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用pandas库读取CSV文件"><span class="nav-number">2.3.</span> <span class="nav-text">用pandas库读取CSV文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Json储存结构化数据"><span class="nav-number">3.</span> <span class="nav-text">使用Json储存结构化数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cloud-J</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
