@@ -84,10 +84,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件操作和数据的存储">
 <meta property="og:url" content="http://yoursite.com/2018/09/17/文件操作和数据的存储/index.html">
-<meta property="og:site_name" content="Cloud-J">
+<meta property="og:site_name" content="Cloud-J的博客">
 <meta property="og:description" content="python文件操作open函数python中对文件操作主要是使用了内建函数open() 最常见的用法是带两个参数：open(filename, mode)，举个例子 1open(&apos;workflie.txt&apos;, &apos;w&apos;) 参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：    字符 含义     &amp;#39;r&amp;#39; 以只读方式打开文件（默认）   &amp;#39;w&amp;#39;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-17T14:51:10.401Z">
+<meta property="og:updated_time" content="2018-10-20T04:15:12.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件操作和数据的存储">
 <meta name="twitter:description" content="python文件操作open函数python中对文件操作主要是使用了内建函数open() 最常见的用法是带两个参数：open(filename, mode)，举个例子 1open(&apos;workflie.txt&apos;, &apos;w&apos;) 参数一是含有文件名的字符串。参数二是说明文件的使用方式，可用的模式有：    字符 含义     &amp;#39;r&amp;#39; 以只读方式打开文件（默认）   &amp;#39;w&amp;#39;">
@@ -126,7 +126,7 @@
 
 
 
-  <title>文件操作和数据的存储 | Cloud-J</title>
+  <title>文件操作和数据的存储 | Cloud-J的博客</title>
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Cloud-J</span>
+        <span class="site-title">Cloud-J的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -252,7 +252,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloud-J">
+      <meta itemprop="name" content="Cloud-J的博客">
     </span>
 
     
@@ -304,7 +304,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.3k
                 </span>
               
 
@@ -418,8 +418,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">testdata = [[<span class="string">'a'</span>, <span class="string">'1'</span>], [<span class="string">'b'</span>,<span class="string">'2'</span>], [<span class="string">'c'</span>,<span class="string">'3'</span>]]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'test.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f)</span><br><span class="line">    writer.writerrows(testdata)</span><br></pre></td></tr></table></figure>
 <h3 id="用pandas库读取CSV文件"><a href="#用pandas库读取CSV文件" class="headerlink" title="用pandas库读取CSV文件"></a>用pandas库读取CSV文件</h3><p>使用pandas库中的read_csv方法也可以进行csv文件的读取，并且返回的类型为DataFrame。有兴趣的可以去看<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv" target="_blank" rel="noopener">pandas库的官网文档</a></p>
 <h2 id="使用Json储存结构化数据"><a href="#使用Json储存结构化数据" class="headerlink" title="使用Json储存结构化数据"></a>使用Json储存结构化数据</h2><blockquote>
-<p>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。JSON的数据格式其实就是python里面的字典格式，里面可以包含方括号括起来的数组，也就是python里面的列表。</p>
+<p>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。JSON的数据格式其实类似python里面的字典格式，里面可以包含方括号括起来的数组，也就是python里面的列表。</p>
 </blockquote>
+<p>这是一个json的示例</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"question_id"</span>: <span class="number">15</span>,</span><br><span class="line">    <span class="attr">"question"</span>: <span class="string">"科学发展观的基本要求是_________。"</span>,</span><br><span class="line">    <span class="attr">"answer"</span>: <span class="string">"全面协调可持续"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种数据组织方式，条理清晰，能更好的表示自然界中人或物等实体的属性关系。可以理解为一种树状结构，一棵有枝干，枝干上有叶子的树。</p>
+<p>Json文件看起来就像python中的字典，由键（keys）和值（values）组成键值对，每个键都有对应一个值，这个值有着可以嵌套的优点，既可以是字符串，也可以是字典或者列表</p>
 
       
     </div>
@@ -668,12 +672,11 @@
   
 
 
-
-
-
-
   
-  
+
+
+
+
 
 
 
@@ -713,12 +716,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
