@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Cloud-J的博客">
 <meta property="og:description" content="Beautifulsoup库简介在介绍使用css选择器之前，我们先来了解一下要与其配合使用的Beautifulsoup库  Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.  安装Beautifulsoup库的安装和reques">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-05T05:10:08.204Z">
+<meta property="og:updated_time" content="2018-11-09T10:58:37.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页信息提取">
 <meta name="twitter:description" content="Beautifulsoup库简介在介绍使用css选择器之前，我们先来了解一下要与其配合使用的Beautifulsoup库  Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.  安装Beautifulsoup库的安装和reques">
@@ -398,8 +398,7 @@
 <td>前一个字符的0次或1次扩展</td>
 </tr>
 <tr>
-<td>\</td>
-<td></td>
+<td>&#124;</td>
 <td>左右表达式的任意一个</td>
 </tr>
 <tr>
@@ -420,8 +419,7 @@
 </tr>
 <tr>
 <td>()</td>
-<td>分组标记，内部只能使用\</td>
-<td></td>
+<td>分组标记，内部只能使用&#124;</td>
 </tr>
 <tr>
 <td>\d</td>
@@ -443,10 +441,7 @@
 </thead>
 <tbody>
 <tr>
-<td>P(Y\</td>
-<td>YT\</td>
-<td>YTH\</td>
-<td>YTHO)?N</td>
+<td>P(Y&#124;YT&#124;YTH&#124;YTHO)?N</td>
 <td>‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’</td>
 </tr>
 <tr>
@@ -844,8 +839,7 @@
 前一个字符的0次或1次扩展
 
 
-\
-
+|
 左右表达式的任意一个
 
 
@@ -866,8 +860,7 @@ $
 
 
 ()
-分组标记，内部只能使用\
-
+分组标记，内部只能使用|
 
 
 \d
@@ -889,10 +882,7 @@ $
 
 
 
-P(Y\
-YT\
-YTH\
-YTHO)?N
+P(Y|YT|YTH|YTHO)?N
 ‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’
 
 
@@ -1123,8 +1113,7 @@ waterfall：请求发送过程的状态轴
 前一个字符的0次或1次扩展
 
 
-\
-
+|
 左右表达式的任意一个
 
 
@@ -1145,8 +1134,7 @@ $
 
 
 ()
-分组标记，内部只能使用\
-
+分组标记，内部只能使用|
 
 
 \d
@@ -1168,10 +1156,7 @@ $
 
 
 
-P(Y\
-YT\
-YTH\
-YTHO)?N
+P(Y|YT|YTH|YTHO)?N
 ‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’
 
 
