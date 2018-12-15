@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Cloud-J的博客">
 <meta property="og:description" content="编码与解码编码(encode)/解码(decode)本质上是一种映射，比如‘A’用ascii编码则是65，计算机中用二进制存储的就是00110101，但计算机怎么知道00110101是‘A’呢，这就需要解码，当选用ascii解码时，计算机把00110101放到ascii码表里一查，发现是‘A’，于是就显示出’A’。 所以编码其实就是真实字符与二进制串之间的对应关系，解码就是二进制串与真实字符的对应">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-29T09:55:04.717Z">
+<meta property="og:updated_time" content="2018-12-15T14:01:18.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python中的编码与解码">
 <meta name="twitter:description" content="编码与解码编码(encode)/解码(decode)本质上是一种映射，比如‘A’用ascii编码则是65，计算机中用二进制存储的就是00110101，但计算机怎么知道00110101是‘A’呢，这就需要解码，当选用ascii解码时，计算机把00110101放到ascii码表里一查，发现是‘A’，于是就显示出’A’。 所以编码其实就是真实字符与二进制串之间的对应关系，解码就是二进制串与真实字符的对应">
@@ -331,6 +331,7 @@
       
         <h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><p>编码(encode)/解码(decode)本质上是一种映射，比如‘A’用ascii编码则是65，计算机中用二进制存储的就是00110101，但计算机怎么知道00110101是‘A’呢，这就需要解码，当选用ascii解码时，计算机把00110101放到ascii码表里一查，发现是‘A’，于是就显示出’A’。</p>
 <p>所以编码其实就是真实字符与二进制串之间的对应关系，解码就是二进制串与真实字符的对应关系</p>
+<a id="more"></a>
 <h2 id="ASCII、Unicode、UTF-8的关系"><a href="#ASCII、Unicode、UTF-8的关系" class="headerlink" title="ASCII、Unicode、UTF-8的关系"></a>ASCII、Unicode、UTF-8的关系</h2><h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h3><p>由于电脑是美国人发明的，所以最早的时候只有127个字符被编码到计算机中，即大小写英文字母，数字和一些符号，这个编码表就是ASCII编码,比如’A’的编码是65，‘a’的编码是97。</p>
 <h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>但是要处理中文显然一个字节是不够的，至少需要两个字节，而且还不能和ASCII编码冲突，所以，中国制定了<code>GB2312</code>编码，用来把中文编进去。</p>
 <p>你可以想得到的是，全世界有上百种语言，日本把日文编到<code>Shift_JIS</code>里，韩国把韩文编到<code>Euc-kr</code>里，各国有各国的标准，就会不可避免地出现冲突，结果就是，在多语言混合的文本中，显示出来会有乱码。</p>

@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  743
+                  874
                 </span>
               
 
@@ -616,40 +616,15 @@
 
       
         
-          
-            <h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><p>编码(encode)/解码(decode)本质上是一种映射，比如‘A’用ascii编码则是65，计算机中用二进制存储的就是00110101，但计算机怎么知道00110101是‘A’呢，这就需要解码，当选用ascii解码时，计算机把00110101放到ascii码表里一查，发现是‘A’，于是就显示出’A’。</p>
+          <h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><p>编码(encode)/解码(decode)本质上是一种映射，比如‘A’用ascii编码则是65，计算机中用二进制存储的就是00110101，但计算机怎么知道00110101是‘A’呢，这就需要解码，当选用ascii解码时，计算机把00110101放到ascii码表里一查，发现是‘A’，于是就显示出’A’。</p>
 <p>所以编码其实就是真实字符与二进制串之间的对应关系，解码就是二进制串与真实字符的对应关系</p>
-<h2 id="ASCII、Unicode、UTF-8的关系"><a href="#ASCII、Unicode、UTF-8的关系" class="headerlink" title="ASCII、Unicode、UTF-8的关系"></a>ASCII、Unicode、UTF-8的关系</h2><h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h3><p>由于电脑是美国人发明的，所以最早的时候只有127个字符被编码到计算机中，即大小写英文字母，数字和一些符号，这个编码表就是ASCII编码,比如’A’的编码是65，‘a’的编码是97。</p>
-<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>但是要处理中文显然一个字节是不够的，至少需要两个字节，而且还不能和ASCII编码冲突，所以，中国制定了<code>GB2312</code>编码，用来把中文编进去。</p>
-<p>你可以想得到的是，全世界有上百种语言，日本把日文编到<code>Shift_JIS</code>里，韩国把韩文编到<code>Euc-kr</code>里，各国有各国的标准，就会不可避免地出现冲突，结果就是，在多语言混合的文本中，显示出来会有乱码。</p>
-<p>因此，<strong>为了把所有语言统一到一套编码里，就出现了Unicode</strong></p>
-<p>Unicode的标准也是不断在发展，但最常用的就是两个字节表示一个字符。现代操作系统和大多数编程语言都直接支持Unicode。</p>
-<p>ASCII与Unicode的区别在于：ASCII用一个字节表示一个字符，Unicode用两个字节表示一个字符</p>
-<p>字母<code>A</code>用ASCII编码是十进制的<code>65</code>，二进制的<code>01000001</code>；</p>
-<p>字符<code>0</code>用ASCII编码是十进制的<code>48</code>，二进制的<code>00110000</code>，注意字符<code>&#39;0&#39;</code>和整数<code>0</code>是不同的；</p>
-<p>汉字<code>中</code>已经超出了ASCII编码的范围，用Unicode编码是十进制的<code>20013</code>，二进制的<code>01001110 00101101</code>。</p>
-<p>你可以猜测，如果把ASCII编码的<code>A</code>用Unicode编码，只需要在前面补0就可以，因此，<code>A</code>的Unicode编码是<code>00000000 01000001</code>。</p>
-<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>新的问题又出现了：如果统一成Unicode编码，乱码问题从此消失了。但是，如果你写的文本基本上全部是英文的话，用Unicode编码比ASCII编码需要多一倍的存储空间，在存储和传输上就十分不划算。</p>
-<p>所以，本着节约的精神，又出现了把Unicode编码转化为“可变长编码”的<code>UTF-8</code>编码。<strong>UTF-8就是在互联网上使用最广的一种Unicode的实现方式。</strong></p>
-<p><strong>UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1-4个字节表示一个符号，根据不同的符号而变化字节长度。</strong>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节。ASCII编码实际上可以被看成是UTF-8编码的一部分，所以，大量只支持ASCII编码的历史遗留软件可以在UTF-8编码下继续工作。</p>
-<h2 id="python中的编码"><a href="#python中的编码" class="headerlink" title="python中的编码"></a>python中的编码</h2><h3 id="Python源代码文件的执行过程"><a href="#Python源代码文件的执行过程" class="headerlink" title="Python源代码文件的执行过程"></a>Python源代码文件的执行过程</h3><p>我们都知道，磁盘上的文件都是以二进制格式存放的，其中文本文件都是以某种特定编码的字节形式存放的。对于程序源代码文件的字符编码是由编辑器指定的，比如我们使用VScode来编写Python程序时会指定文件编码为UTF-8，那么Python代码被保存到磁盘时就会被转换为UTF-8编码对应的字节（encode过程）后写入磁盘。</p>
-<p>当执行Python代码文件中的代码时，Python解释器在读取Python代码文件中的字节串之后，需要将其转换为Unicode字符串（decode过程）之后才执行后续操作。</p>
-<h3 id="python对字符串的支持"><a href="#python对字符串的支持" class="headerlink" title="python对字符串的支持"></a>python对字符串的支持</h3><h4 id="python2"><a href="#python2" class="headerlink" title="python2"></a>python2</h4><p>在<strong>python2</strong>中对字符串的支持有三个类：<code>basesrting</code> 、<code>str</code> 、<code>unicode</code></p>
-<p><code>unicode</code>和<code>str</code>都是<code>basestring</code>的子类。严格意义上说，<code>str</code>其实是字节串，它是<code>unicode</code>经过编码后的字节组成的序列。</p>
-<p>对’UTF-8’编码的str ‘’汉‘’ 使用<code>len()</code>函数时，返回的长度是3，因为‘UTF-8’编码下的‘汉‘==’\xE6\xB1\x89’</p>
-<p><code>unicode</code>才是真正意义上的字符串，对字节串str使用正确的字符编码进行解码后获得，并且len(u’汉’)==1。</p>
-<h4 id="python3"><a href="#python3" class="headerlink" title="python3"></a>python3</h4><p><strong>python3</strong>中对字符串的支持进行了实现类层次的上简化，去掉了<code>unicode</code>类，添加了一个<code>bytes</code>类。从表面上来看，可认为Python3中的<code>str</code>和<code>unicode</code>合二为一了。</p>
-<p>实际上，Python3中已经意识到之前的错误，开始明确区分字符串与字节。因此Python3中的str已经是真正的字符串，而字节是用单独的bytes类来表示。</p>
-<p>也就是说，Python3默认定义的就是字符串，实现了对Unicode的内置支持，减轻了程序员对字符串处理的负担。</p>
-<p>我们通过下面的例子来了解一下<code>str</code>与<code>byte</code>之间的转换</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下代码在交互式环境下运行</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'中'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(a)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;                        # 显然<span class="title">a</span>的类型是一个'<span class="title">str</span>'</span></span><br><span class="line">&gt;&gt;&gt; b = a.encode('utf-8')            # 把字符串a用utf-8方式编码后赋值给b </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(b)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">bytes</span>'&gt;                      # 于是<span class="title">b</span>的类型就是'<span class="title">bytes</span>'</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">b</span>                                # 这里我们把<span class="title">b</span>打印出来看看</span></span><br><span class="line"><span class="class"><span class="title">b</span>'\<span class="title">xe4</span>\<span class="title">xb8</span>\<span class="title">xad</span>'                      # 这就是<span class="title">UTF</span>-8编码下的‘中’字</span></span><br><span class="line">&gt;&gt;&gt; c = b.decode('utf-8')            # 把b用utf-8方式解码后赋值给c</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c                                <span class="comment"># 把c打印出来</span></span><br><span class="line"><span class="string">'中'</span>                                  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(c)       </span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">str</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>简单来说，通过<code>encode()</code>函数将<code>str</code>类型的字符串转变为<code>bytes</code>；通过<code>decode()</code>将<code>bytes</code>类型转变为<code>str</code>类型。</p>
-<p>如果<code>bytes</code>中有无法解码的字节，<code>decode()</code>就会报错：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  ...</span><br><span class="line">UnicodeDecodeError: <span class="string">'utf-8'</span> codec can<span class="string">'t decode byte 0xff in position 3: invalid start byte</span></span><br></pre></td></tr></table></figure>
-<p>这就要考虑是否是选择的解码方式不对</p>
-<p>在操作字符串时，我们经常遇到str和bytes的互相转换。为了避免乱码问题，应当始终坚持使用UTF-8编码对str和bytes进行转换。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/28/python中的编码与解码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

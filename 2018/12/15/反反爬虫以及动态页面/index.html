@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/15/反反爬虫以及动态页面/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/15/反反爬虫以及动态页面/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/15/反反爬虫以及动态页面/3.jpg">
-<meta property="og:updated_time" content="2018-12-15T13:44:10.402Z">
+<meta property="og:updated_time" content="2018-12-15T15:30:03.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反反爬虫以及动态页面">
 <meta name="twitter:description" content="反爬虫我们在上网的过程中总是被要求填各种各样的验证码，其中不乏一些诡异的验证码 比如说”o0。o”和”1Il|”这种死活输不对的数字验证码">
@@ -308,7 +308,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  743
+                  874
                 </span>
               
 
@@ -356,7 +356,10 @@
 <h3 id="基于headers的验证机制"><a href="#基于headers的验证机制" class="headerlink" title="基于headers的验证机制"></a>基于headers的验证机制</h3><p>对请求的headers检测是最常见的反爬虫策略，网站主要是通过对headers中的<code>User-Agent</code>进行检测。因为爬虫在进行模拟请求的时候默认的<code>User-Agent</code>和普通用户通过浏览器访问网站的是不同的。遇到这种反爬虫机制，只要在爬虫中添加浏览器的<code>User-Agent</code>就可以突破了。浏览器的<code>User-Agent</code>可以通过Chrome开发者工具抓包查看请求中的headers字段就可以了。</p>
 <h3 id="基于用户行为的反爬虫机制"><a href="#基于用户行为的反爬虫机制" class="headerlink" title="基于用户行为的反爬虫机制"></a>基于用户行为的反爬虫机制</h3><p>普通用户正常访问网站的行为和爬虫访问网站的方式是有很大区别的。同过对两者行为的分析，可以区分出是否是爬虫。比如说，我们在写爬虫的时候如果没有设置请求间隔，一般情况下1秒钟可能会发送几十个请求，对面一看就知道这是一个爬虫了，为什么？因为正常人单身几十年也没有这个手速，所以是机器的可能性很大。那对面就会限制这个有异常的IP，拒绝这个IP发出的请求。</p>
 <p>对于封IP这种应对机制，我们能做的就是用代理IP。网上往往有很多公开的代理IP，我们可以手动添加到自己的IP池(不过手动也太麻烦了)，也可以写一个爬虫爬取这些代理的IP。然后在进行请求的时候，用这些代理IP去代替我们发送请求。</p>
-<p>在请求时添加代理的方法</p>
+<p>在用requests库模拟请求时添加代理的方法很简单，只要在get方法中添加一个叫<code>proxies</code>的参数就行，这个参数传递的是一个字典，有两个键，分别是<code>http</code>和<code>https</code>，对应两种不同的协议</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proxies = &#123;</span><br><span class="line">  <span class="string">"http"</span>: <span class="string">"http://124.235.135.87:80"</span>,</span><br><span class="line">  <span class="string">"https"</span>: <span class="string">"http://10.10.1.10:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">requests.get(<span class="string">"http://example.org"</span>, proxies=proxies)</span><br></pre></td></tr></table></figure>
+<p>设置多个代理IP的写法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proxies = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://124.235.135.87:80"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"http://10.10.1.10:1080"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://124.235.135.87:80"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"http://10.10.1.10:1080"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line">requests.get(<span class="string">"http://example.org"</span>, proxies=radom.choice(proxies))</span><br></pre></td></tr></table></figure>
 
       
     </div>
